@@ -1,7 +1,8 @@
 namespace PerfectProof;
 
-public interface IRange
+public interface IPerfectRange<TStart, TEnd, TOffset> where TStart : INumber where TEnd : INumber where TOffset where INumber
 {
-    int Start { get; }
-    int End { get; }
+    TStart Start { get; }
+    TEnd End { get; }
+    TOffset Offset { get; }
 }
