@@ -1,6 +1,11 @@
+using System.Numerics;
+
 namespace PerfectProof;
 
-public interface IPerfectRange<TStart, TEnd, TOffset> where TStart : INumber where TEnd : INumber where TOffset where INumber
+public interface IPerfectRange<TStart, TEnd, TOffset>
+    where TStart : INumber<TStart>
+    where TEnd : INumber<TEnd>
+    where TOffset : INumber<TOffset>
 {
     TStart Start { get; }
     TEnd End { get; }
