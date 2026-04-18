@@ -7,6 +7,11 @@ public interface INumber
     INumber Add(INumber other);
     INumber Subtract(INumber other);
     INumber Multiply(INumber other);
+    /// <summary>
+    /// Divides by <paramref name="other"/> with the requested number of decimal places in the result.
+    /// </summary>
+    /// <param name="other">The divisor.</param>
+    /// <param name="precision">The number of decimal places to retain. Must be zero or greater. Defaults to 28.</param>
     INumber Divide(INumber other, int precision = 28);
     string ToPlainString();
 }
@@ -50,7 +55,7 @@ public sealed class BigDecimalNumber : INumber, IEquatable<BigDecimalNumber>, IC
 
         var parts = value.Split('.', StringSplitOptions.None);
         if (parts.Length > 2 ||
-            parts.Any(static p => p.Length > 0 && !p.All(char.IsDigit)) ||
+            parts.Any(p => p.Any(c => !char.IsDigit(c))) ||
             (parts.Length == 2 && parts[0].Length == 0 && parts[1].Length == 0))
         {
             throw new FormatException("Invalid decimal format.");
