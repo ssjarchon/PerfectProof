@@ -12,3 +12,10 @@ public interface IPerfectRange<TStart, TEnd, TOffset>
     TEnd End { get; }
     TOffset Offset { get; }
 }
+
+public interface IPerfectRange<TStartAndEnd, TOffset> = IPerfectRange<TStartAndEnd, TStartAndEnd, TOffset>
+{
+}
+
+interface IPerfectRange{
+}
