@@ -1,7 +1,6 @@
 namespace PerfectProof;
 
-interface IPerfectRange{
-}
+
 
 interface IPerfectSet<TRange, TItem> 
   where TRange : IPerfectRange
